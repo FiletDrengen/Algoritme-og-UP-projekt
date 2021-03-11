@@ -6,7 +6,7 @@ namespace Virksomhed_og_UP
     public class Brikker
     {
         private Texture2D sprite;
-        private Color color;
+        private Color color = Color.White;
         private Vector2 position;
         private Rectangle destinationRectangle;
 
@@ -19,7 +19,7 @@ namespace Virksomhed_og_UP
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(sprite, destinationRectangle, Color.White);
+            spriteBatch.Draw(sprite, destinationRectangle, null, color, 0, new Vector2((sprite.Width / 2), sprite.Height), SpriteEffects.None, 0);
             //spriteBatch.Draw(sprite, position, null, color, 0f, Vector2.Zero, 0.1f, SpriteEffects.None, 1);
         }
     }
