@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Virksomhed og UP
+namespace Virksomhed_og_UPs
 {
-    class Bubblesort
-{
-}
+    internal class Bubblesort
+    {
+    }
 }
