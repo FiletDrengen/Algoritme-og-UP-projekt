@@ -9,7 +9,7 @@ namespace Virksomhed_og_UP
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private List<int> numbers = new List<int>() { 6, 4, 9, 5, 2, 225, 22, 45, 5, 34, 8, 7, };
+        private List<int> numbers = new List<int>() { 6, 4, 9, 5, 2, 225, 22, 45, 5, 34, 8, 7, 10, 40, 30, 25, 34, 54, 8, 5, 43, 22, };
         private List<Brikker> brikker = new List<Brikker>();
         public static Dictionary<string, Texture2D> sprites = new Dictionary<string, Texture2D>();
 
