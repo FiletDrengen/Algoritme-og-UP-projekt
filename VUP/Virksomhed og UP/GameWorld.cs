@@ -12,6 +12,7 @@ namespace Virksomhed_og_UP
         public List<int> numbers = new List<int>() { 6, 4, 9, 5, 2, 225, 22, 45, 5, 34, 8, 7, 10, 40, 30, 25, 34, 54, 8, 5, 43, 22, };
         private List<Brikker> brikker = new List<Brikker>();
         public static Dictionary<string, Texture2D> sprites = new Dictionary<string, Texture2D>();
+        private bool isSort = false;
 
         public GameWorld()
         {
@@ -36,17 +37,44 @@ namespace Virksomhed_og_UP
             {
                 brikker.Add(new Brikker(numbers[i], i));
             }
+
             // TODO: use this.Content to load your game content here
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == Microsoft.Xna.Framework.Input.ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Escape))
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
-            //numbers = QuickSort.Quick(numbers);
+            if (Keyboard.GetState().IsKeyDown(Keys.NumPad1))
+            {
+                numbers = QuickSort.Quick(numbers);
+                brikker.Clear();
+                for (int i = 1; i < numbers.Count; i++)
+                {
+                    brikker.Add(new Brikker(numbers[i], i));
+                }
+            }
 
+            if (Keyboard.GetState().IsKeyDown(Keys.NumPad2))
+            {
+                numbers = InsertionSort.Insertionsort(numbers);
+                brikker.Clear();
+                for (int i = 1; i < numbers.Count; i++)
+                {
+                    brikker.Add(new Brikker(numbers[i], i));
+                }
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.NumPad3))
+            {
+                numbers = Bubblesort.bubblesort(numbers);
+                brikker.Clear();
+                for (int i = 1; i < numbers.Count; i++)
+                {
+                    brikker.Add(new Brikker(numbers[i], i));
+                }
+            }
             base.Update(gameTime);
         }
 

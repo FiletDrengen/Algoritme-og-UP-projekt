@@ -4,32 +4,23 @@ using System.Text;
 
 namespace Virksomhed_og_UP
 {
-    internal class InsertionSort
+    public class InsertionSort
     {
- 
-            static void Main(string[] args)
+        public static List<int> Insertionsort(List<int> numbers)
+        {
+            for (int i = 0; i < numbers.Count - 1; i++)
             {
-                int[] numbers = new[] { 9, 3, 2, 6, 1, 4, 8, 5, 7 };
-
-                Insertionsort(numbers);
-            }
-
-            private static void Insertionsort(int[] numbers)
-            {
-                for (int i = 1; i < numbers.Length; i++)
+                for (int j = i + 1; j > 0; j--)
                 {
-                    int val = numbers[i];
-                    int pointer = i;
-
-                    while (pointer > 0 && val < numbers[pointer - 1])
+                    if (numbers[j - 1] > numbers[j])
                     {
-                        numbers[pointer] = numbers[pointer - 1];
-                        pointer = pointer - 1;
+                        int temp = numbers[j - 1];
+                        numbers[j - 1] = numbers[j];
+                        numbers[j] = temp;
                     }
-
-                    numbers[pointer] = val;
                 }
             }
-
+            return numbers;
+        }
     }
 }
