@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Virksomhed_og_UP
 {
@@ -9,7 +10,7 @@ namespace Virksomhed_og_UP
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        public List<int> numbers = new List<int>() { 6, 4, 9, 5, 2, 225, 22, 45, 5, 34, 8, 7, 10, 40, 30, 25, 34, 54, 8, 5, 43, 22, };
+        public List<int> numbers = new List<int>() { 6, 4, 9, 5, 40, 435, 3, 213, 54, 600, 400, 59, 90, 146, 246, 342, 3, 123, };
         private List<Brikker> brikker = new List<Brikker>();
         public static Dictionary<string, Texture2D> sprites = new Dictionary<string, Texture2D>();
         private Texture2D Baggrund;
@@ -48,20 +49,26 @@ namespace Virksomhed_og_UP
                 Exit();
 
             if (Keyboard.GetState().IsKeyDown(Keys.F1))
-                numbers = QuickSort.Quick(numbers);
+            {
+                Thread thread1 = new Thread(() => QuickSort.Quick(numbers));
+                thread1.Start();
+            }
 
             if (Keyboard.GetState().IsKeyDown(Keys.F2))
-                numbers = InsertionSort.Insertionsort(numbers);
+            {
+                Thread thread2 = new Thread(() => InsertionSort.Insertion(numbers));
+                thread2.Start();
+            }
 
             if (Keyboard.GetState().IsKeyDown(Keys.F3))
-                numbers = Bubblesort.bubblesort(numbers);
-
-            if (Keyboard.GetState().IsKeyDown(Keys.F1) || Keyboard.GetState().IsKeyDown(Keys.F2) || Keyboard.GetState().IsKeyDown(Keys.F3))
             {
-                brikker.Clear();
-                for (int i = 1; i < numbers.Count; i++)
-                    brikker.Add(new Brikker(numbers[i], i));
+                Thread thread3 = new Thread(() => Bubblesort.Bubble(numbers));
+                thread3.Start();
             }
+
+            brikker.Clear();
+            for (int i = 1; i < numbers.Count; i++)
+                brikker.Add(new Brikker(numbers[i], i));
 
             base.Update(gameTime);
         }

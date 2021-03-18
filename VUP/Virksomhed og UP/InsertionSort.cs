@@ -1,22 +1,34 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Virksomhed_og_UP
 {
     public class InsertionSort
     {
-        public static List<int> Insertionsort(List<int> numbers)
+        public static List<int> Insertion(List<int> numbers)
         {
-            for (int i = 0; i < numbers.Count - 1; i++)
+            int index = 0;
+            while (index < numbers.Count - 1)
             {
-                for (int j = i + 1; j > 0; j--)
+                //for (index = 0; index < numbers.Count - 1; index++)
                 {
-                    if (numbers[j - 1] > numbers[j])
+                    //if (timer > cooldownTime)
                     {
-                        int temp = numbers[j - 1];
-                        numbers[j - 1] = numbers[j];
-                        numbers[j] = temp;
+                        for (int j = index + 1; j > 0; j--)
+                        {
+                            if (numbers[j - 1] > numbers[j])
+                            {
+                                int temp = numbers[j - 1];
+                                numbers[j - 1] = numbers[j];
+                                numbers[j] = temp;
+                                Thread.Sleep(1000);
+                            }
+                        }
+                        index++;
                     }
                 }
             }

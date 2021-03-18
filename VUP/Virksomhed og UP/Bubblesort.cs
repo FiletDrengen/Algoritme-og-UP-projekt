@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace Virksomhed_og_UP
 {
     public class Bubblesort
     {
-        public static List<int> bubblesort(List<int> numbers)
+        public static List<int> Bubble(List<int> numbers)
         {
             int temp;
 
@@ -19,6 +20,7 @@ namespace Virksomhed_og_UP
                         temp = numbers[i + 1];
                         numbers[i + 1] = numbers[i];
                         numbers[i] = temp;
+                        Thread.Sleep(1000);
                     }
                 }
             }
