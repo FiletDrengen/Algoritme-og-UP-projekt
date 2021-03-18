@@ -14,6 +14,7 @@ namespace Virksomhed_og_UP
         private List<Brikker> brikker = new List<Brikker>();
         public static Dictionary<string, Texture2D> sprites = new Dictionary<string, Texture2D>();
         private Texture2D Baggrund;
+        private Texture2D Dania;
 
         public GameWorld()
         {
@@ -39,6 +40,7 @@ namespace Virksomhed_og_UP
                 brikker.Add(new Brikker(numbers[i], i));
             }
             Baggrund = Content.Load<Texture2D>("Baggrund");
+            Dania = Content.Load<Texture2D>("erhvervsakademi-dania");
 
             // TODO: use this.Content to load your game content here
         }
@@ -84,6 +86,7 @@ namespace Virksomhed_og_UP
             }
             _spriteBatch.Begin();
             _spriteBatch.Draw(Baggrund, new Vector2(0, 0), Color.White);
+            _spriteBatch.Draw(Dania, new Vector2(1700, 10), Color.White);
             _spriteBatch.End();
 
             // TODO: Add your drawing code here
