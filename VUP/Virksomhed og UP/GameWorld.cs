@@ -52,8 +52,7 @@ namespace Virksomhed_og_UP
 
             if (Keyboard.GetState().IsKeyDown(Keys.F1))
             {
-                Thread thread1 = new Thread(() => QuickSort.Quick(numbers));
-                thread1.Start();
+                numbers = QuickSort.Quick(numbers);
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.F2))
